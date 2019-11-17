@@ -7,6 +7,7 @@ public class A_star {
     boolean zuEnde;
     int zielX;  // X-Koordinate des Zielpunkts
     int zielY;  // Y-Koordinate des Zielpunkts
+    int knotenNr = 0;
 
     public A_star(Feld[][] feld) {
         Spielfeld = feld;
@@ -24,7 +25,7 @@ public class A_star {
             }
         }
         HCI();
-
+        System.out.println("\n Knotenmenge: " + knotenNr);
 
     }
 
@@ -38,6 +39,7 @@ public class A_star {
                     s.add(f);
                     Pfade.add(new Pfad(s, 0, zielX, zielY));
                     f.setBetretbar(false);
+                    knotenNr++;
                 }
             }
         }
@@ -94,6 +96,7 @@ public class A_star {
                     Pfad neu = new Pfad(best.getVorgaenger(), (best.getKosten() + 1),zielX,zielY);
                     neu.fuegeKnotenHinzu(nach);
                     Pfade.add(neu);
+                    knotenNr++;
                 }
             }
             Feld nach2 = Spielfeld[tmpx + 1][tmpy];
@@ -103,6 +106,7 @@ public class A_star {
                     Pfad neu2 = new Pfad(best.getVorgaenger(), (best.getKosten() + 1),zielX,zielY);
                     neu2.fuegeKnotenHinzu(nach2);
                     Pfade.add(neu2);
+                    knotenNr++;
                 }
             }
             Feld nach3 = Spielfeld[tmpx][tmpy - 1];
@@ -112,6 +116,7 @@ public class A_star {
                     Pfad neu3 = new Pfad(best.getVorgaenger(), (best.getKosten() + 1), zielX, zielY);
                     neu3.fuegeKnotenHinzu(nach3);
                     Pfade.add(neu3);
+                    knotenNr++;
                 }
             }
             Feld nach4 = Spielfeld[tmpx][tmpy + 1];
@@ -121,6 +126,7 @@ public class A_star {
                     Pfad neu4 = new Pfad(best.getVorgaenger(), (best.getKosten() + 1),zielX,zielY);
                     neu4.fuegeKnotenHinzu(nach4);
                     Pfade.add(neu4);
+                    knotenNr++;
                 }
             }
             Pfade.remove(best);
