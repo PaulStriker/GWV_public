@@ -7,6 +7,7 @@ public class Breadth_first {
     Queue <Feld> Warteschlange = new LinkedList<>();
     Feld [][] Spielfeld;
     boolean _zuEnde;
+    int knotenNr = 0;
 
     public Breadth_first(Feld [][] Feld_Eingabe)
     {
@@ -25,6 +26,7 @@ public class Breadth_first {
 
         }
         HCI();
+        System.out.println("\n Knotenmenge: " + knotenNr);
     }
     public void HCI()
     {
@@ -48,6 +50,7 @@ public class Breadth_first {
                 if(f._getAnzeige().equals("s"))
                 {
                     Warteschlange.add(f);
+                    knotenNr++;
                     String tmp = f._getAnzeige();
                     tmp = tmp.toUpperCase();
                     f.setAnzeige(tmp);
@@ -89,6 +92,7 @@ public class Breadth_first {
                 nach.setBetretbar(false);
                 tmplist = f.get_vorgaenger();
                 tmplist.add(f);
+                knotenNr++;
                 nach.set_vorgaenger(tmplist);
             }
 
@@ -101,6 +105,7 @@ public class Breadth_first {
             }
             tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
            nach = Spielfeld[tmpx][tmpy-1];
@@ -111,6 +116,7 @@ public class Breadth_first {
             }
             tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
            nach = Spielfeld[tmpx][tmpy+1];
@@ -121,6 +127,7 @@ public class Breadth_first {
             }
             tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
         }
