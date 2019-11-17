@@ -6,6 +6,7 @@ public class depth_first
     Feld[][] _Spielfeld;
     Stack<Feld> _Stack = new Stack<>();
     boolean _zuEnde = false;
+    int knotenNr = 0;
 
     public depth_first(Feld[][] Feld_Eingabe)
     {
@@ -24,7 +25,7 @@ public class depth_first
             }
         }
         HCI();
-
+        System.out.println("\n Knotenmenge: " + knotenNr);
     }
 
     public void HCI()
@@ -83,6 +84,7 @@ public class depth_first
             }
             tmplist = f.get_vorgaenger();
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
             nach = _Spielfeld[tmpx+1][tmpy];
@@ -93,6 +95,7 @@ public class depth_first
             }
             tmplist = f.get_vorgaenger();
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
             nach = _Spielfeld[tmpx][tmpy-1];
@@ -103,6 +106,7 @@ public class depth_first
             }
             tmplist = f.get_vorgaenger();
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
             nach = _Spielfeld[tmpx][tmpy+1];
@@ -113,6 +117,7 @@ public class depth_first
             }
             tmplist = f.get_vorgaenger();
             tmplist.add(f);
+            knotenNr++;
             nach.set_vorgaenger(tmplist);
 
             if(f.equals(_Stack.peek()))
