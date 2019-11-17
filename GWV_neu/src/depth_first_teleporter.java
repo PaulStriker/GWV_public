@@ -6,7 +6,8 @@ public class depth_first_teleporter {
     Feld[][] _Spielfeld;
     Stack<Feld> _Stack = new Stack<>(); // Im Stack werden die Felder während der Suche gespeichert.
     boolean _zuEnde = false; // Der Boolean wird als Abburchbediengung für die Suche verwendet
-
+    int knotenNr = 0;
+    
     public depth_first_teleporter(Feld[][] Feld_Eingabe) {
         _Spielfeld = Feld_Eingabe;
         Schritt1();
@@ -19,7 +20,7 @@ public class depth_first_teleporter {
             }
         }
         HCI();
-
+        System.out.println("\n Knotenmenge: " + knotenNr);
     }
 
     /*
@@ -94,6 +95,7 @@ public class depth_first_teleporter {
                 }
                  tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
                  tmplist.add(f);
+                 knotenNr++;
                  nach.set_vorgaenger(tmplist);
 
                 nach = _Spielfeld[tmpx + 1][tmpy];
@@ -103,6 +105,7 @@ public class depth_first_teleporter {
                 }
                 tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
                 tmplist.add(f);
+                knotenNr++;
                 nach.set_vorgaenger(tmplist);
 
                 nach = _Spielfeld[tmpx][tmpy - 1];
@@ -112,6 +115,7 @@ public class depth_first_teleporter {
                 }
                 tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
                 tmplist.add(f);
+                knotenNr++;
                 nach.set_vorgaenger(tmplist);
 
                 nach = _Spielfeld[tmpx][tmpy + 1];
@@ -121,6 +125,7 @@ public class depth_first_teleporter {
                 }
                 tmplist = f.get_vorgaenger(); // Die Felder bekommen alle eine Liste mit ihren Vorgängern, damit man später den ganzen Pfad erhält.
                 tmplist.add(f);
+                knotenNr++;
                 nach.set_vorgaenger(tmplist);
 
                 if (f.equals(_Stack.peek())) {
