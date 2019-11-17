@@ -86,7 +86,7 @@ public class A_star_5 {
             }
             System.out.println("");
             Pfade.remove(0);
-            if(i ==5)
+            if(i ==4)
             {
                 zuEnde = true;
             }
